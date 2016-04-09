@@ -82,10 +82,11 @@ public class Hole : HoleManager {
 			//Check if hole is covered
 			if (this.isCovered == false) {
 
-				//Check if button input = correct
+				//Check if buttone input = correct
 				if (button == true) {
-                    float startTime = Time.fixedTime;
-                    Debug.Log("Start time set to: " + startTime);
+
+					//Set startTime
+                    startTime = Time.fixedTime;
 
                     //Update hand plug
                     hand.SetIsHooked(true);
@@ -100,15 +101,13 @@ public class Hole : HoleManager {
 				//Keep hand position to hole
 				hand.SetPosition (this.transform.position);
 
-                // Begin timer
                 
-                float timeDifference = Time.time - startTime;
-                Debug.Log("startTime" + startTime + ", Time.time: " + " , timeDifference" + timeDifference);
+                //get time difference
+                float timeDifference = Time.fixedTime - startTime;
 
                 // Check timer
-                if (timeDifference < holeTime)
-                {
-
+                if (timeDifference > holeTime)
+				{
                     Debug.Log("Chanelled for 3.0 seconds");
                 }
             } else { //RELEASE
