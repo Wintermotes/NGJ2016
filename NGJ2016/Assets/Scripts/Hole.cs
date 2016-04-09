@@ -9,7 +9,7 @@ public class Hole : HoleManager {
 	private enum state {active, inactive, dead, invulnerable};
 	private state playerState;
 
-	private enum Button {SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
+	public enum Button {SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
 	private Button button;
 
 
@@ -26,41 +26,47 @@ public class Hole : HoleManager {
 	public void Init(Vector2 position){
 		SetButton ();
 		SetPosition (position);
-		//checkPosition ();
 	}
 
 
 	void OnTriggerStay2D(Collider2D col){
 
-		//Check if hole is covered
-		if (this.isCovered == false) {
+		Transform transform = col.GetComponent<Transform> ();
+		PlayerController controller = col.GetComponentInParent<PlayerController> ();
 
-			Transform transform = col.GetComponent<Transform> ();
-			PlayerController controller = col.GetComponentInParent<PlayerController> ();
-			//Debug.Log ("Controller = " + controller.name);
+		//Check if player
+		if (transform.tag == controller.prefix + "_LeftHand") {
 
-			//Check if player
-			if (transform.tag == controller.prefix + "_LeftHand") {
+			bool button = controller.GetTriangle ();
 
-
-				bool button = controller.GetTriangle();
+			//Check if hole is covered
+			if (this.isCovered == false) {
 
 				Debug.Log ("Triangle is pressed = " + button);
 
 				//Check if button input = correct
-				if(button == true){
+				if (button == true) {
 
 					//Update hand plug
 					controller.leftHandIsHooked = true;
-
-					//Set position
-					controller.lefthandHolePosition = this.transform.position;
 
 					//Update hole isCovered
 					this.isCovered = true;
 				}
 			}
 
+			if (button == true) {
+				//Set position
+				controller.lefthandHolePosition = this.transform.position;
+			} else {
+				//Update hole isCovered
+				this.isCovered = false;
+
+				//Update hand plug
+				controller.leftHandIsHooked = false;
+			}
+			
+			
 		}
 	}
 
