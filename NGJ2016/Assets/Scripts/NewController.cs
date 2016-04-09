@@ -134,4 +134,11 @@ public class NewController : MonoBehaviour {
 			Debug.Log (prefix + " R2 is " + R2);
 	}
 
+	public Vector2 GetLeftStick(){
+		return new Vector2 (stickLeftHorizontal, stickLeftVertical);
+	}
+	public Vector2 GetRightStick(){
+		return new Vector2 (stickRightHorizontal, stickRightVertical);
+	}
+
 }
