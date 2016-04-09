@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hole : MonoBehaviour {
+public class Hole : HoleManager {
 
-	private bool plugged = false;
+	private bool isCovered = false;
+	private Vector2 position;
 
 	private enum state {active, inactive, dead, invulnerable};
 	private state playerState;
@@ -21,14 +22,21 @@ public class Hole : MonoBehaviour {
 	
 	}
 
-	public void Init(){
+	public void Init(Vector2 position){
 		SetButton ();
-		SetPosition ();
+		SetPosition (position);
+		//checkPosition ();
 	}
 
-	private void SetPosition(){
-		this.transform.position = new Vector2 (Random.Range (0f, 10f), Random.Range (0f, 10f));
-		Debug.Log ("pos = " + GetPosition ());
+	public void SetPosition(Vector2 position){
+		//position = new Vector2 (Random.Range (-5f, 5f), Random.Range (-5f, 5f));
+		//GetSecludedPosition (position);
+
+		this.transform.position = position;
+	}
+
+	public Vector2 GetPosition(){
+		return this.transform.position;
 	}
 
 	/**
@@ -37,13 +45,9 @@ public class Hole : MonoBehaviour {
 	private void SetButton(){
 		button = (Button)Random.Range(0, 7);
 	}
-
-	public Vector2 GetPosition(){
-		return this.transform.position;
-	}
-
-	public bool IsPlugged(){
-		return this.plugged;
+		
+	public bool IsCovered(){
+		return this.isCovered;
 	}
 
 
