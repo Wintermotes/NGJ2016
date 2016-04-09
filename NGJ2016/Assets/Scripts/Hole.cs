@@ -13,15 +13,6 @@ public class Hole : HoleManager {
 	private Button button;
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-			
-	}
 
 	public void Init(Vector2 position){
 		SetButton ();
@@ -29,52 +20,94 @@ public class Hole : HoleManager {
 	}
 
 
+	/**
+	 * Returns true if the holes button is pressed
+	 * 
+	 */
+	private bool IsCorrectButtonPressed(PlayerController controller){
+
+		bool buttonPressed = false;
+
+		switch (this.button) {
+			case Button.TRIANGLE:
+				buttonPressed = controller.IsTrianglePressed ();
+				break;
+			case Button.X:
+				buttonPressed = controller.IsXPressed ();
+				break;
+			case Button.ROUND:
+				buttonPressed = controller.IsRoundPressed ();
+				break;
+			case Button.SQUARE:
+				buttonPressed = controller.IsSquarePressed ();
+				break;
+			case Button.PAD_DOWN:
+				buttonPressed = controller.IsPadDownPressed ();
+				break;
+			case Button.PAD_UP:
+				buttonPressed = controller.IsPadUpPressed ();
+				break;
+			case Button.PAD_LEFT:
+				buttonPressed = controller.IsPadLeftPressed ();
+				break;
+			case Button.PAD_RIGHT:
+				buttonPressed = controller.IsPadRightPressed ();
+				break;
+		}
+
+		return buttonPressed;
+	}
+
+
 	void OnTriggerStay2D(Collider2D col){
 
-		Transform transform = col.GetComponent<Transform> ();
+		string tag = col.GetComponent<Transform> ().tag;
 		PlayerController controller = col.GetComponentInParent<PlayerController> ();
 
-		//Check if player
-		if (transform.tag == controller.prefix + "_LeftHand") {
 
-			bool button = controller.GetTriangle ();
+		string leftHandTag = controller.prefix + "_LeftHand";
+		string rightHandTag = controller.prefix + "_RightHand";
+
+		//Check if player hand
+		if (tag == leftHandTag || tag == rightHandTag) {
+
+			Hand hand = col.GetComponentInChildren<Hand> ();
+
+			//bool button = controller.GetTriangle ();
+			bool button = IsCorrectButtonPressed(controller);
 
 			//Check if hole is covered
 			if (this.isCovered == false) {
-
-				Debug.Log ("Triangle is pressed = " + button);
 
 				//Check if button input = correct
 				if (button == true) {
 
 					//Update hand plug
-					controller.leftHandIsHooked = true;
+					hand.SetIsHooked(true);
 
 					//Update hole isCovered
 					this.isCovered = true;
 				}
 			}
 
-			if (button == true) {
-				//Set position
-				controller.lefthandHolePosition = this.transform.position;
-			} else {
+			if (button == true) { //STAY
+				
+				//Keep hand position to hole
+				hand.SetPosition (this.transform.position);
+
+			} else { //RELEASE
+				
 				//Update hole isCovered
 				this.isCovered = false;
 
 				//Update hand plug
-				controller.leftHandIsHooked = false;
+				hand.SetIsHooked(false);
 			}
-			
-			
 		}
 	}
 
 
 	public void SetPosition(Vector2 position){
-		//position = new Vector2 (Random.Range (-5f, 5f), Random.Range (-5f, 5f));
-		//GetSecludedPosition (position);
-
 		this.transform.position = position;
 	}
 

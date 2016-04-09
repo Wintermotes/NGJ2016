@@ -141,8 +141,41 @@ public class NewController : MonoBehaviour {
 		return new Vector2 (stickRightHorizontal, stickRightVertical);
 	}
 
-	public bool GetTriangle(){
+	public bool IsSquarePressed(){
+		return this.SQUARE;
+	}
+	public bool IsXPressed(){
+		return this.X;
+	}
+	public bool IsRoundPressed(){
+		return this.ROUND;
+	}
+	public bool IsTrianglePressed(){
 		return this.TRIANGLE;
+	}
+	public bool IsPadUpPressed(){
+		if (padVertical == 1)
+			return true;
+		else
+			return false;
+	}
+	public bool IsPadDownPressed(){
+		if (padVertical == -1)
+			return true;
+		else
+			return false;
+	}
+	public bool IsPadLeftPressed(){
+		if (padHorizontal == -1)
+			return true;
+		else
+			return false;
+	}
+	public bool IsPadRightPressed(){
+		if (padHorizontal == 1)
+			return true;
+		else
+			return false;
 	}
 
 }
