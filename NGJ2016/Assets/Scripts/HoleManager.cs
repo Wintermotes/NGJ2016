@@ -36,7 +36,7 @@ public class HoleManager : MonoBehaviour {
 	 * Finds a position
 	 */
 	public Vector2 GetSecludedPosition(){
-		Debug.Log ("checkPosition() Running and I count " + holeList.Count + " holes");
+		//Debug.Log ("checkPosition() Running and I count " + holeList.Count + " holes");
 
 		Vector2 position = new Vector2(0,0);
 		float diff = 0;
@@ -47,7 +47,7 @@ public class HoleManager : MonoBehaviour {
 
 			toClose = false;
 			position = new Vector2 (Random.Range (-5f, 5f), Random.Range (-5f, 5f));
-			Debug.Log("Testing pos @" + position);
+			//Debug.Log("Testing pos @" + position);
 
 			foreach (GameObject h in holeList) {
 
@@ -60,7 +60,7 @@ public class HoleManager : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("Assigning position @" + position);
+		//Debug.Log ("Assigning position @" + position);
 
 		return position;
 	}

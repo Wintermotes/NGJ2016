@@ -4,7 +4,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	//The 'energy' bar
-	private float oxygenCounter = 1000;
+	private float oxygenCounter = 10000;
 
 	//Seconds passed in the level
 	private float timer = 0;
