@@ -104,35 +104,6 @@ public class NewController : MonoBehaviour {
 	}
 
 
-	private void DebugButtons(){
-		if(stickLeftHorizontal != 0)
-			Debug.Log (prefix + " stickLeftHorizontal = " + stickLeftHorizontal);
-		if(stickLeftVertical != 0)
-			Debug.Log (prefix + " stickLeftVertical = " + stickLeftVertical);
-		if(stickRightHorizontal != 0)
-			Debug.Log (prefix + " stickRightHorizontal = " + stickRightHorizontal);
-		if(stickRightVertical != 0)
-			Debug.Log (prefix + " stickRightVertical = " + stickRightVertical);
-
-		if(X == true)
-			Debug.Log (prefix + " X is pressed" + X);
-		if(SQUARE == true)
-			Debug.Log (prefix + " SQAURE is pressed" + SQUARE);
-		
-		if(TRIANGLE == true)
-			Debug.Log (prefix + " TRIANGLE is pressed" + TRIANGLE);
-		if(ROUND == true)
-			Debug.Log (prefix +  " ROUND is pressed" + ROUND);
-		if(padHorizontal != 0)
-			Debug.Log (prefix + " padHorizontal is " + padHorizontal);
-		if(padVertical != 0)
-			Debug.Log (prefix + " padVertical is " + padVertical);
-
-		if(L2 != 0)
-			Debug.Log (prefix + " L2 is " + L2);
-		if(R2 != 0)
-			Debug.Log (prefix + " R2 is " + R2);
-	}
 
 	public Vector2 GetLeftStick(){
 		return new Vector2 (stickLeftHorizontal, stickLeftVertical);
@@ -141,6 +112,10 @@ public class NewController : MonoBehaviour {
 		return new Vector2 (stickRightHorizontal, stickRightVertical);
 	}
 
+
+	/**
+	 * PUBLIC BOOLEAN FUNCTIONS RETURNING TRUE IF BUTTON IS PRESSED
+	 */
 	public bool IsSquarePressed(){
 		return this.SQUARE;
 	}
@@ -176,6 +151,38 @@ public class NewController : MonoBehaviour {
 			return true;
 		else
 			return false;
+	}
+
+
+
+	private void DebugButtons(){
+		if(stickLeftHorizontal != 0)
+			Debug.Log (prefix + " stickLeftHorizontal = " + stickLeftHorizontal);
+		if(stickLeftVertical != 0)
+			Debug.Log (prefix + " stickLeftVertical = " + stickLeftVertical);
+		if(stickRightHorizontal != 0)
+			Debug.Log (prefix + " stickRightHorizontal = " + stickRightHorizontal);
+		if(stickRightVertical != 0)
+			Debug.Log (prefix + " stickRightVertical = " + stickRightVertical);
+
+		if(X == true)
+			Debug.Log (prefix + " X is pressed" + X);
+		if(SQUARE == true)
+			Debug.Log (prefix + " SQAURE is pressed" + SQUARE);
+
+		if(TRIANGLE == true)
+			Debug.Log (prefix + " TRIANGLE is pressed" + TRIANGLE);
+		if(ROUND == true)
+			Debug.Log (prefix +  " ROUND is pressed" + ROUND);
+		if(padHorizontal != 0)
+			Debug.Log (prefix + " padHorizontal is " + padHorizontal);
+		if(padVertical != 0)
+			Debug.Log (prefix + " padVertical is " + padVertical);
+
+		if(L2 != 0)
+			Debug.Log (prefix + " L2 is " + L2);
+		if(R2 != 0)
+			Debug.Log (prefix + " R2 is " + R2);
 	}
 
 }
