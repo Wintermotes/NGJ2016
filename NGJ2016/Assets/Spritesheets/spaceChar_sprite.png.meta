@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 00f9023021115b849b4394627e68fa9d
-timeCreated: 1460192914
+timeCreated: 1460240440
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,7 +14,7 @@ TextureImporter:
     21300014: right_overarm
     21300016: right_hand
     21300018: right_knee
-    21300020: left_underarm
+    21300020: right_underarm
     21300022: left_foot
     21300024: right_foot
     21300026: right_leg
@@ -176,7 +176,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: left_underarm
+    - name: right_underarm
       rect:
         serializedVersion: 2
         x: 45

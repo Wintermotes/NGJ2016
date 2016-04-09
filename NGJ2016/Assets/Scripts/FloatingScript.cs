@@ -12,5 +12,6 @@ public class FloatingScript : MonoBehaviour {
     {
         Vector2 startPush = new Vector2(Random.Range(minXOffset, maxXOffset), Random.Range(minYOffset, maxYOffset));
         GetComponent<Rigidbody2D>().AddForce(startPush);
+        ArrayList check = new ArrayList();
     }
 }
