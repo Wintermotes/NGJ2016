@@ -5,6 +5,8 @@ public class PlayerController : NewController {
 
 	GameObject leftHand;
 	GameObject rightHand;
+
+	float handMovementSpeed = 2f;
 	
 
 	// Use this for initialization
@@ -30,7 +32,7 @@ public class PlayerController : NewController {
 		if (leftHand.gameObject.GetComponent<Hand> ().IsHooked () == false) {
 			
 			if (GetLeftStick ().magnitude > 0) {
-				leftHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetLeftStick () * 10);
+				leftHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetLeftStick () * handMovementSpeed);
 			}
 		} else {
 			KeepLeftHandAtHole ();
@@ -50,7 +52,7 @@ public class PlayerController : NewController {
 	private void MoveRightHand(){
 		if (rightHand.gameObject.GetComponent<Hand> ().IsHooked () == false) {
 			if (GetRightStick ().magnitude > 0) {
-				rightHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetRightStick () * 10);
+				rightHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetRightStick () * handMovementSpeed);
 			}
 		} else {
 			KeepRightHandAtHole ();
