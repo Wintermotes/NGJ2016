@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
+	GameObject lm;
 
 	// Use this for initialization
 	void Start () {
+		lm = GameObject.Find ("LevelManager");
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,11 @@ public class Score : MonoBehaviour {
 
 	public void SetScore(float score){
 
+		//Negate the prev passed time
+		int prevPassedTime = lm.GetComponent<LevelManager> ().GetPassedSessionTime ();
+		score -= prevPassedTime;
+
+		//Create timer string
 		int timer = Mathf.FloorToInt(score);
 		int minutes = Mathf.FloorToInt(timer / 60);
 		int seconds = timer % 60;
@@ -27,7 +34,6 @@ public class Score : MonoBehaviour {
 			_seconds = 0 + seconds.ToString();
 		else
 			_seconds = seconds.ToString();
-			
 
 		string scoreTime = minutes + ":" + _seconds;
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -10,13 +11,17 @@ public class LevelManager : MonoBehaviour {
 	private float oxygenCounter;
 	private float startOxygen = 10000;
 
-	//Seconds passed in the level
+
 	private float timer = 0;
+
+	//Seconds passed in the level
+	private int sessionTimer = 0;
+	private int passedSessionTime = 0;
 
 	//The time between new holes appear
 	private float waitForHole = 5;
 
-	private int numPlayers = 1;
+	private int numPlayers = 3;
 
 	private HoleManager hm;
 
@@ -55,6 +60,13 @@ public class LevelManager : MonoBehaviour {
 
 		//IF PLAYING
 		if (gameState == GameState.playing) {
+			if (prevGameState != gameState)
+				passedSessionTime = Mathf.FloorToInt(Time.fixedTime);
+				
+			//Debug.Log ("passedSessionTime = " + passedSessionTime);
+			sessionTimer = Mathf.FloorToInt(Time.fixedTime) - passedSessionTime;
+			Transform gameTimer = UI.transform.Find ("Timer");
+			gameTimer.GetComponent<Timer> ().UpdateTime (sessionTimer);
 
 			if (Time.fixedTime - timer > waitForHole) {
 				hm.CreateNewHole ();
@@ -75,6 +87,8 @@ public class LevelManager : MonoBehaviour {
 				Transform gameOver = UI.transform.Find ("Game Over");
 				StartCoroutine (gameOver.GetComponent<GameOver> ().Rescale ());
 			}
+
+
 		}
 
 		//Update prevState
@@ -101,8 +115,6 @@ public class LevelManager : MonoBehaviour {
 			}
 		}
 
-		//Debug.Log("OxygenCount = " + lostOxygen);
-
 		return lostOxygen;
 	}
 
@@ -114,4 +126,14 @@ public class LevelManager : MonoBehaviour {
 	public float GetOxygenCounter(){
 		return this.oxygenCounter;
 	}
+
+	public void RestartGame(){
+		if(gameState == GameState.gameOver)
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public int GetPassedSessionTime(){
+		return this.passedSessionTime;
+	}
+
 }

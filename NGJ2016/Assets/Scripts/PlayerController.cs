@@ -7,12 +7,15 @@ public class PlayerController : NewController {
 	GameObject rightHand;
 
 	float handMovementSpeed = 6f;
-	
+
+	GameObject lm;
 
 	// Use this for initialization
 	void Start () {
 		leftHand = GameObject.FindGameObjectWithTag (prefix + "_LeftHand");
 		rightHand = GameObject.FindGameObjectWithTag (prefix + "_RightHand");
+
+		lm = GameObject.Find ("LevelManager");
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,8 @@ public class PlayerController : NewController {
 		MoveLeftHand ();
 
 		MoveRightHand ();
+
+		RestartScene ();
 
 	}
 
@@ -61,5 +66,10 @@ public class PlayerController : NewController {
 
 	private void KeepRightHandAtHole(){
 		rightHand.gameObject.GetComponent<Rigidbody2D> ().transform.position = rightHand.gameObject.GetComponent<Hand> ().GetPosition ();
+	}
+
+	private void RestartScene(){
+		if(IsXPressed())
+			lm.GetComponent<LevelManager>().RestartGame ();
 	}
 }

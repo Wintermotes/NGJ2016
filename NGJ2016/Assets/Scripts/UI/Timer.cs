@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		UpdateTime ();
+		//UpdateTime ();
 
 		//Set the text with min and sec
 		this.gameObject.GetComponent<Text> ().text = SetText ();
@@ -24,8 +24,8 @@ public class Timer : MonoBehaviour {
 	}
 
 
-	private void UpdateTime(){
-		int timer = Mathf.FloorToInt(Time.fixedTime);
+	public void UpdateTime(int time){
+		int timer = Mathf.FloorToInt(time);
 		minutes = Mathf.FloorToInt(timer / 60);
 		seconds = timer % 60;
 	}
