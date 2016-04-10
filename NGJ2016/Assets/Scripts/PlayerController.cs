@@ -3,48 +3,53 @@ using System.Collections;
 
 public class PlayerController : NewController {
 
-//	GameObject leftHand;
-//	GameObject rightHand;
+
+	public bool leftHandIsHooked = false;
+	public bool rightHandIsHooked = false;
+
+	public Vector2 lefthandHolePosition;
+
+	GameObject leftHand;
+
+	
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("Player " + prefix);
-
-//		int children = transform.childCount;
-//		for (int i = 0; i < children; ++i) {
-//			Transform child = transform.GetChild (i);
-//			Debug.Log ("Tag = " + child.tag);
-//			if (child.tag == "LeftHand") {
-//				
-//				leftHand = child;
-//			}
-//			if (child.tag == "RightHand")
-//				rightHand = child;
-//
-//		}
-//
-//		print("leftHand:  " + leftHand);
-//		print("rightHand:  " + rightHand);
-			
+		leftHand = GameObject.FindGameObjectWithTag (prefix + "_LeftHand");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if (leftHandIsHooked == false) {
+			MoveLeftHand ();
+		} else {
+			leftHand.gameObject.GetComponent<Rigidbody2D> ().transform.position = lefthandHolePosition;
+		}
+
+
+		MoveRightHand ();
+
+	}
+
+
+	private void MoveLeftHand(){
+		
+
 		if (GetLeftStick ().magnitude > 0) {
-			GameObject leftHand = GameObject.FindGameObjectWithTag (prefix + "_LeftHand");
+			
 			leftHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetLeftStick () * 10);
 		}
 
+	}
+
+	private void MoveRightHand(){
 		if (GetRightStick ().magnitude > 0) {
 			GameObject rightHand = GameObject.FindGameObjectWithTag (prefix + "_RightHand");
 			rightHand.gameObject.GetComponent<Rigidbody2D> ().AddForce (GetRightStick () * 10);
 		}
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            Debug.Log("Add force");
-            GetComponent<Rigidbody2D>().AddForce(Vector2.left * 10.0f);
-        }
 	}
+
+
 }

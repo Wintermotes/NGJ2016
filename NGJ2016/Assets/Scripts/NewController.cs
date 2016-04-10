@@ -47,7 +47,7 @@ public class NewController : MonoBehaviour {
 		InverseHorizontalRightStickValues ();
 		NormalizeL2AndR2 ();
 
-		DebugButtons ();
+		//DebugButtons ();
 
 	}
 
@@ -139,6 +139,10 @@ public class NewController : MonoBehaviour {
 	}
 	public Vector2 GetRightStick(){
 		return new Vector2 (stickRightHorizontal, stickRightVertical);
+	}
+
+	public bool GetTriangle(){
+		return this.TRIANGLE;
 	}
 
 }

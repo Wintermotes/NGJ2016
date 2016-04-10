@@ -12,6 +12,7 @@ public class Hole : HoleManager {
 	private enum Button {SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
 	private Button button;
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,7 @@ public class Hole : HoleManager {
 	
 	// Update is called once per frame
 	void Update () {
-	
+			
 	}
 
 	public void Init(Vector2 position){
@@ -27,6 +28,42 @@ public class Hole : HoleManager {
 		SetPosition (position);
 		//checkPosition ();
 	}
+
+
+	void OnTriggerStay2D(Collider2D col){
+
+		//Check if hole is covered
+		if (this.isCovered == false) {
+
+			Transform transform = col.GetComponent<Transform> ();
+			PlayerController controller = col.GetComponentInParent<PlayerController> ();
+			//Debug.Log ("Controller = " + controller.name);
+
+			//Check if player
+			if (transform.tag == controller.prefix + "_LeftHand") {
+
+
+				bool button = controller.GetTriangle();
+
+				Debug.Log ("Triangle is pressed = " + button);
+
+				//Check if button input = correct
+				if(button == true){
+
+					//Update hand plug
+					controller.leftHandIsHooked = true;
+
+					//Set position
+					controller.lefthandHolePosition = this.transform.position;
+
+					//Update hole isCovered
+					this.isCovered = true;
+				}
+			}
+
+		}
+	}
+
 
 	public void SetPosition(Vector2 position){
 		//position = new Vector2 (Random.Range (-5f, 5f), Random.Range (-5f, 5f));

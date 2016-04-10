@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:NGJ2016/Assets/Materials/FireMaterial 1.mat.meta
 guid: 472722a914c915942a6e168fba423674
 timeCreated: 1460250821
+=======
+guid: fab09b22507724fd9be1b82faa7306bc
+timeCreated: 1460147742
+>>>>>>> c28ba23aad6b5ad1571cfc8d42319cfe70ff54bb:NGJ2016/Assets/Prefabs/Scenes/GameScene.unity.meta
 licenseType: Free
 NativeFormatImporter:
   userData: 
