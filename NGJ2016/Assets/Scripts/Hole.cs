@@ -108,7 +108,11 @@ public class Hole : HoleManager {
                 // Check timer
                 if (timeDifference > holeTime)
 				{
+                    GetComponent<SpriteRenderer>().sprite = objectSprites[Random.Range(0, objectSprites.Length) + 1];
+                    this.isCovered = true;
+                    hand.SetIsHooked(false);
                     Debug.Log("Chanelled for 3.0 seconds");
+                    return; 
                 }
             } else { //RELEASE
 				
