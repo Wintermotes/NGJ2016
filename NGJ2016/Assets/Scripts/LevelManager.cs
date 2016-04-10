@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour {
 	private float height = 6f;
 
 	//The 'energy' bar
-	private float oxygenCounter = 10000;
+	private float oxygenCounter;
 	private float startOxygen = 10000;
 
 	//Seconds passed in the level
@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 		hm = this.gameObject.GetComponent<HoleManager> ();
 		UI = GameObject.Find ("UI");
+
+		oxygenCounter = startOxygen;
 
 		timer = Time.fixedTime;
 
@@ -70,13 +72,12 @@ public class LevelManager : MonoBehaviour {
 		if(gameState == GameState.gameOver){
 
 			if (prevGameState != gameState) {
-				Transform go = UI.transform.Find ("Game Over");
-				StartCoroutine (go.GetComponent<GameOver> ().Rescale ());
-				Debug.Log ("Game over is = " + go);
+				Transform gameOver = UI.transform.Find ("Game Over");
+				StartCoroutine (gameOver.GetComponent<GameOver> ().Rescale ());
 			}
 		}
 
-
+		//Update prevState
 		prevGameState = gameState;
 	}
 
@@ -108,5 +109,9 @@ public class LevelManager : MonoBehaviour {
 
 	public float GetTimer(){
 		return this.timer;
+	}
+
+	public float GetOxygenCounter(){
+		return this.oxygenCounter;
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour {
 
@@ -16,9 +17,15 @@ public class GameOver : MonoBehaviour {
 		
 	}
 
+//	private void SetText(){
+//		this.gameObject.GetComponent<Text> ().text = "game over";
+//	}
 
 
 	public IEnumerator Rescale(){
+
+		Transform UIScore = this.gameObject.transform.Find ("Score");
+		UIScore.GetComponent<Score> ().SetScore (Time.fixedTime);
 
 		int maxFrames = 15;
 

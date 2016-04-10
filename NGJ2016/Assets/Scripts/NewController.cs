@@ -47,7 +47,8 @@ public class NewController : MonoBehaviour {
 		InverseHorizontalRightStickValues ();
 		NormalizeL2AndR2 ();
 
-		//DebugButtons ();
+		if(prefix == "P3")
+			DebugButtons ();
 
 	}
 

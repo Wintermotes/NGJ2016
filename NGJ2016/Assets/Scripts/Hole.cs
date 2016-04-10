@@ -8,7 +8,7 @@ public class Hole : HoleManager {
     public AudioClip[] repairClips;
     public AudioClip holeClosedClip;
     public enum Button { SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
-    public float holeTime = 3.0f;
+    private float holeTime = 10.0f;
 
     private float startTime = 0.0f;
     private bool isCovered = false;

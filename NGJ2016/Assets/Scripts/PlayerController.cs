@@ -6,7 +6,7 @@ public class PlayerController : NewController {
 	GameObject leftHand;
 	GameObject rightHand;
 
-	float handMovementSpeed = 2f;
+	float handMovementSpeed = 6f;
 	
 
 	// Use this for initialization

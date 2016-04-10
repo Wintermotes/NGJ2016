@@ -29,8 +29,7 @@ public class Timer : MonoBehaviour {
 		minutes = Mathf.FloorToInt(timer / 60);
 		seconds = timer % 60;
 	}
-
-
+		
 	private string SetText(){
 
 		string _seconds;
