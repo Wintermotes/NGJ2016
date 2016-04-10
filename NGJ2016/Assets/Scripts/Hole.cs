@@ -3,7 +3,10 @@ using System.Collections;
 
 public class Hole : HoleManager {
     public Sprite[] buttonSprites;
-    public Sprite[] objectSprites; 
+    public Sprite[] objectSprites;
+    public AudioClip[] holeClips;
+    public AudioClip[] repairClips;
+    public AudioClip holeClosedClip;
     public enum Button { SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
     public float holeTime = 3.0f;
 
@@ -15,7 +18,7 @@ public class Hole : HoleManager {
 	private state playerState;
 	private Button button;
 
-
+    private bool hasPlayed = false; 
 
     public void Init(Vector2 position){
 		SetButton ();
@@ -93,7 +96,11 @@ public class Hole : HoleManager {
 
 					//Update hole isCovered
 					this.isCovered = true;
-				}
+
+                    //Play repair sound and stop hole sound 
+                    PlaySound(repairClips[Random.Range(0, repairClips.Length)]);
+
+                }
 			}
 
 			if (button == true) { //STAY
@@ -101,17 +108,21 @@ public class Hole : HoleManager {
 				//Keep hand position to hole
 				hand.SetPosition (this.transform.position);
 
-                
                 //get time difference
                 float timeDifference = Time.fixedTime - startTime;
 
                 // Check timer
                 if (timeDifference > holeTime)
 				{
+                    // Set sprite
                     GetComponent<SpriteRenderer>().sprite = objectSprites[Random.Range(0, objectSprites.Length) + 1];
+
+                    // Set internal variables
                     this.isCovered = true;
                     hand.SetIsHooked(false);
-                    Debug.Log("Chanelled for 3.0 seconds");
+
+                    // Play sound
+                    PlaySound(holeClosedClip); 
                     return; 
                 }
             } else { //RELEASE
@@ -121,7 +132,10 @@ public class Hole : HoleManager {
 
 				//Update hand plug
 				hand.SetIsHooked(false);
-			}
+
+                // Replay the wind sound 
+                PlaySound(holeClips[Random.Range(0, holeClips.Length)]);
+            }
 		}
 	}
 
@@ -139,11 +153,18 @@ public class Hole : HoleManager {
 	 */
 	private void SetButton(){
         int buttonValue = Random.Range(0, 4);
-        Sprite s = GetComponent<SpriteRenderer>().sprite = buttonSprites[buttonValue];
         button = (Button)buttonValue;
-        
-	}
-		
+
+        GetComponent<SpriteRenderer>().sprite = buttonSprites[buttonValue];
+        PlaySound(holeClips[Random.Range(0, holeClips.Length)]); 
+    }
+	
+    private void PlaySound(AudioClip clip)
+    {
+        GetComponent<AudioSource>().clip = clip; 
+        GetComponent<AudioSource>().Play();
+    }
+    	
 	public bool IsCovered(){
 		return this.isCovered;
 	}
