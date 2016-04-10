@@ -105,9 +105,9 @@ public class PlayerController : NewController {
 	public void CoughBlood()
     {
         // PUT THIS IN LEVEL_MANAGER: 
-        //  GameObject someplayer.GetComponent<PlayerController>().CoughBlood(); 
+        //GameObject someplayer.GetComponent<PlayerController>().CoughBlood(); 
         GetComponentInChildren<ParticleSystem>().Play();
-        StartCoroutine(coughBloodSounds());
+        //StartCoroutine(coughBloodSounds());
 
     }
 
