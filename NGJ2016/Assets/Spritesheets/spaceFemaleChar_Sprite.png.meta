@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: f75104985a79651479056440ac65cb9c
+timeCreated: 1460277045
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spaceFemaleChar_helm
+    21300002: spaceFemaleChar_Head
+    21300004: spaceFemaleChar_Torso
+    21300006: spaceFemaleChar_LeftOverarm
+    21300008: spaceFemaleChar_leftHand
+    21300010: spaceFemaleChar_LeftUnderarm
+    21300012: spaceFemaleChar_RightArm
+    21300014: spaceFemaleChar_RightOverarm
+    21300016: spaceFemaleChar_leftFist
+    21300018: spaceFemaleChar_RightUndearm
+    21300020: spaceFemaleChar_RightFist
+    21300022: spaceFemaleChar_rightFoot
+    21300024: spaceFemaleChar_leftFoot
+    21300026: spaceFemaleChar_leftKnee
+    21300028: spaceFemaleChar_leftleg
+    21300030: spaceFemaleChar_rightKnee
+    21300032: spaceFemaleChar_rightLeg
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: spaceFemaleChar_helm
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 25
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_Head
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 32
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_Torso
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 34
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_LeftOverarm
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 42
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_leftHand
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 40
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_LeftUnderarm
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 42
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_RightArm
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 41
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_RightOverarm
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 33
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_leftFist
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 30
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_RightUndearm
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 32
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_RightFist
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 30
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_rightFoot
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 15
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_leftFoot
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 6
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_leftKnee
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 8
+        width: 2
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 2}
+      outline: []
+    - name: spaceFemaleChar_leftleg
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 6
+        width: 2
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_rightKnee
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 8
+        width: 2
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spaceFemaleChar_rightLeg
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 6
+        width: 2
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
