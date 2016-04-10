@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerController : NewController {
 
+    public AudioClip[] coughSounds;
+    public GameObject bloodParticles;
 	GameObject leftHand;
 	GameObject rightHand;
 
@@ -62,4 +64,31 @@ public class PlayerController : NewController {
 	private void KeepRightHandAtHole(){
 		rightHand.gameObject.GetComponent<Rigidbody2D> ().transform.position = rightHand.gameObject.GetComponent<Hand> ().GetPosition ();
 	}
+
+    public void CoughBlood()
+    {
+        // PUT THIS IN LEVEL_MANAGER: 
+        //  GameObject someplayer.GetComponent<PlayerController>().CoughBlood(); 
+        GetComponentInChildren<ParticleSystem>().Play();
+        StartCoroutine(coughBloodSounds());
+
+    }
+
+    IEnumerator coughBloodSounds ()
+    {
+        AudioSource source = GetComponent<AudioSource>();
+
+        source.clip = coughSounds[Random.Range(0, coughSounds.Length)];
+        source.Play();
+        yield return new WaitForSeconds(1.0f);
+
+        source.clip = coughSounds[Random.Range(0, coughSounds.Length)];
+        source.Play();
+        yield return new WaitForSeconds(1.0f);
+
+        source.clip = coughSounds[Random.Range(0, coughSounds.Length)];
+        source.Play();
+        yield return new WaitForSeconds(1.0f);
+
+    }
 }
