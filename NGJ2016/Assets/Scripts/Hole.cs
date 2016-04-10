@@ -152,7 +152,7 @@ public class Hole : HoleManager {
 	 * Assigns a random button
 	 */
 	private void SetButton(){
-        int buttonValue = Random.Range(0, 4);
+        int buttonValue = Random.Range(0, 7);
         button = (Button)buttonValue;
 
         GetComponent<SpriteRenderer>().sprite = buttonSprites[buttonValue];

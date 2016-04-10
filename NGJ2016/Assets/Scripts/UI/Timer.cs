@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour {
 		else
 			_seconds = seconds.ToString();
 
-		string text = minutes.ToString() + ":" + _seconds;
+		string text = "TIME: " + minutes.ToString() + ":" + _seconds;
 		return text;
 	}
 }
