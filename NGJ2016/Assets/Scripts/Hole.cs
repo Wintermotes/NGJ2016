@@ -12,9 +12,9 @@ public class Hole : HoleManager {
 	public enum Button {SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
 	private Button button;
 
+    public Sprite[] buttonSprites;
 
-
-	public void Init(Vector2 position){
+    public void Init(Vector2 position){
 		SetButton ();
 		SetPosition (position);
 	}
@@ -119,7 +119,10 @@ public class Hole : HoleManager {
 	 * Assigns a random button
 	 */
 	private void SetButton(){
-		button = (Button)Random.Range(0, 7);
+        int buttonValue = Random.Range(0, 4);
+        Sprite s = GetComponent<SpriteRenderer>().sprite = buttonSprites[buttonValue];
+        button = (Button)buttonValue;
+        
 	}
 		
 	public bool IsCovered(){
