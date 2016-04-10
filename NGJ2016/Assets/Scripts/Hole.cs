@@ -69,11 +69,11 @@ public class Hole : HoleManager {
 
 		string tag = col.GetComponent<Transform> ().tag;
 		PlayerController controller = col.GetComponentInParent<PlayerController> ();
-
+             
 
 		string leftHandTag = controller.prefix + "_LeftHand";
 		string rightHandTag = controller.prefix + "_RightHand";
-
+        
 		//Check if player hand
 		if (tag == leftHandTag || tag == rightHandTag) {
 
@@ -94,8 +94,15 @@ public class Hole : HoleManager {
                     //Update hand plug
                     hand.SetIsHooked(true);
 
-					//Update hole isCovered
-					this.isCovered = true;
+                    //Update sprite 
+                    if(tag == controller.prefix + "_LeftHand")
+                    {
+                        controller.changeHandSprite(col.gameObject, true);
+                    }
+
+
+                    //Update hole isCovered
+                    this.isCovered = true;
 
                     //Play repair sound and stop hole sound 
                     PlaySound(repairClips[Random.Range(0, repairClips.Length)]);
@@ -135,6 +142,9 @@ public class Hole : HoleManager {
 
                 // Replay the wind sound 
                 PlaySound(holeClips[Random.Range(0, holeClips.Length)]);
+
+                // Change sprite back
+                controller.changeHandSprite(col.gameObject, false);
             }
 		}
 	}
