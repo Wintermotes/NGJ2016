@@ -22,10 +22,12 @@ public class LevelManager : MonoBehaviour {
 	private float waitForHole = 5;
 
 	private int numPlayers = 3;
+	public GameObject[] players = new GameObject[3];
 
 	private HoleManager hm;
 
 	GameObject UI;
+
 
 	//The enum values for getting the state of the game
 	private enum GameState { intro, playing, gameOver };
@@ -76,6 +78,16 @@ public class LevelManager : MonoBehaviour {
 
 			DecreaseOxygen ();
 
+
+			if(GetOxygenPercentage() == 10){
+				
+				for(int player = 0; player < numPlayers; player++){
+					Debug.Log ("Bloooooood");
+					players[player].GetComponent<PlayerController>().CoughBlood(); 
+				}
+			}
+
+
 			if (oxygenCounter < 0)
 				gameState = GameState.gameOver;
 		}
@@ -125,6 +137,12 @@ public class LevelManager : MonoBehaviour {
 
 	public float GetOxygenCounter(){
 		return this.oxygenCounter;
+	}
+
+	public int GetOxygenPercentage(){
+		int percentLeft = Mathf.FloorToInt(oxygenCounter / startOxygen * 100);
+
+		return percentLeft;
 	}
 
 	public void RestartGame(){

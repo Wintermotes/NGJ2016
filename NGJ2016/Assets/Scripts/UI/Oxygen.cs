@@ -19,7 +19,7 @@ public class Oxygen : MonoBehaviour {
 
 	private string SetText(){
 
-		int oxygen = Mathf.FloorToInt(lm.GetComponent<LevelManager> ().GetOxygenCounter ()) / 100;
+		int oxygen = Mathf.FloorToInt(lm.GetComponent<LevelManager> ().GetOxygenPercentage ());
 		//Debug.Log ("oxygen = " + oxygen);
 		return "OXYGEN " + oxygen.ToString() + "%";
 	}
