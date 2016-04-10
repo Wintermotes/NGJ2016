@@ -2,17 +2,20 @@
 using System.Collections;
 
 public class Hole : HoleManager {
+    public Sprite[] buttonSprites;
+    public Sprite[] objectSprites; 
+    public enum Button { SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
+    public float holeTime = 3.0f;
 
-	private bool isCovered = false;
+    private float startTime = 0.0f;
+    private bool isCovered = false;
 	private Vector2 position;
 
 	private enum state {active, inactive, dead, invulnerable};
 	private state playerState;
-
-	public enum Button {SQUARE, X, ROUND, TRIANGLE, PAD_LEFT, PAD_RIGHT, PAD_UP, PAD_DOWN };
 	private Button button;
 
-    public Sprite[] buttonSprites;
+
 
     public void Init(Vector2 position){
 		SetButton ();
@@ -81,9 +84,11 @@ public class Hole : HoleManager {
 
 				//Check if button input = correct
 				if (button == true) {
+                    float startTime = Time.fixedTime;
+                    Debug.Log("Start time set to: " + startTime);
 
-					//Update hand plug
-					hand.SetIsHooked(true);
+                    //Update hand plug
+                    hand.SetIsHooked(true);
 
 					//Update hole isCovered
 					this.isCovered = true;
@@ -95,7 +100,18 @@ public class Hole : HoleManager {
 				//Keep hand position to hole
 				hand.SetPosition (this.transform.position);
 
-			} else { //RELEASE
+                // Begin timer
+                
+                float timeDifference = Time.time - startTime;
+                Debug.Log("startTime" + startTime + ", Time.time: " + " , timeDifference" + timeDifference);
+
+                // Check timer
+                if (timeDifference < holeTime)
+                {
+
+                    Debug.Log("Chanelled for 3.0 seconds");
+                }
+            } else { //RELEASE
 				
 				//Update hole isCovered
 				this.isCovered = false;
