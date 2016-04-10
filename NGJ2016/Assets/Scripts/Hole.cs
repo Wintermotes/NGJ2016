@@ -95,10 +95,11 @@ public class Hole : HoleManager {
                     hand.SetIsHooked(true);
 
                     //Update sprite 
-                    if(tag == controller.prefix + "_LeftHand")
-                    {
-                        controller.changeHandSprite(col.gameObject, true);
-                    }
+//                    if(tag == controller.prefix + "_LeftHand")
+//                    {
+//						Debug.Log ("Calling change hand with: " + col.gameObject);
+//                        controller.changeHandSprite(col.gameObject, true);
+//                    }
 
 
                     //Update hole isCovered
@@ -121,8 +122,10 @@ public class Hole : HoleManager {
                 // Check timer
                 if (timeDifference > holeTime)
 				{
+
+					Debug.Log ("Hola times is up");
                     // Set sprite
-                    GetComponent<SpriteRenderer>().sprite = objectSprites[Random.Range(0, objectSprites.Length) + 1];
+                    GetComponent<SpriteRenderer>().sprite = objectSprites[Random.Range(0, objectSprites.Length)];
 
                     // Set internal variables
                     this.isCovered = true;
@@ -144,7 +147,7 @@ public class Hole : HoleManager {
                 PlaySound(holeClips[Random.Range(0, holeClips.Length)]);
 
                 // Change sprite back
-                controller.changeHandSprite(col.gameObject, false);
+                //controller.changeHandSprite(col.gameObject, false);
             }
 		}
 	}
