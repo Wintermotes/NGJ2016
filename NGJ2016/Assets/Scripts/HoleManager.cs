@@ -4,10 +4,20 @@ using System.Collections;
 public class HoleManager : MonoBehaviour {
 
 	private ArrayList holeList = new ArrayList ();
-	private float minHoleDistance = 2;
+	private float minHoleDistance = 5;
+	private float width;
+	private float height;
 
 	//The hole game object
 	public GameObject holeObject;
+
+
+	public void SetWidth(float w){
+		this.width = w;
+	}
+	public void SetHeight(float h){
+		this.height = h;
+	}
 
 	public void CreateNewHole (){
 
@@ -43,11 +53,12 @@ public class HoleManager : MonoBehaviour {
 
 		bool toClose = true;
 
-		while (toClose == true) {
+		int index = 0;
+		while (toClose == true && index < 10) {
 
 			toClose = false;
-			position = new Vector2 (Random.Range (-5f, 5f), Random.Range (-5f, 5f));
-			//Debug.Log("Testing pos @" + position);
+
+			position = GetRandomPositionWithinPlayableArea ();
 
 			foreach (GameObject h in holeList) {
 
@@ -58,11 +69,21 @@ public class HoleManager : MonoBehaviour {
 					toClose = true;
 				}
 			}
+			index++;
+			minHoleDistance--;
 		}
 
-		//Debug.Log ("Assigning position @" + position);
+		if(toClose == true)
+			position = GetRandomPositionWithinPlayableArea ();
+
+		//Reset MinHoleDistance for next hole
+		minHoleDistance = 5;
 
 		return position;
 	}
-		
+
+
+	private Vector2 GetRandomPositionWithinPlayableArea(){
+		return new Vector2 (Random.Range (-width/2, width/2), Random.Range (-height/2, height/2));
+	}
 }

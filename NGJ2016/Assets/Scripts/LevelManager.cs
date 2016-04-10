@@ -3,6 +3,9 @@ using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 
+	private float width = 12f;
+	private float height = 6f;
+
 	//The 'energy' bar
 	private float oxygenCounter = 10000;
 
@@ -28,6 +31,9 @@ public class LevelManager : MonoBehaviour {
 		timer = Time.fixedTime;
 
 		gameState = GameState.intro;
+
+		hm.SetWidth (width);
+		hm.SetHeight (height);
 	}
 	
 	// Update is called once per frame
@@ -55,9 +61,7 @@ public class LevelManager : MonoBehaviour {
 		//IF GAMEOVER
 		if(gameState == GameState.gameOver){
 
-
 		}
-
 	}
 
 
