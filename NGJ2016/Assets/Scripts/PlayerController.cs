@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : NewController {
 
     public AudioClip[] coughSounds;
-    public GameObject bloodParticles;
+    public Sprite[] handSprites; 
 	GameObject leftHand;
 	GameObject rightHand;
 
@@ -70,6 +70,32 @@ public class PlayerController : NewController {
 		rightHand.gameObject.GetComponent<Rigidbody2D> ().transform.position = rightHand.gameObject.GetComponent<Hand> ().GetPosition ();
 	}
 
+    public void changeHandSprite(GameObject gb, bool fisted)
+    {
+        string tag = gb.GetComponent<PlayerController>().prefix + "_LeftHand";
+        if (gb.tag == tag) // LEFT HAND
+        {
+            GameObject hand = GameObject.FindGameObjectWithTag(tag);
+            if (fisted == true)
+            {
+                hand.GetComponent<SpriteRenderer>().sprite = handSprites[0];
+            } else
+            {
+                hand.GetComponent<SpriteRenderer>().sprite = handSprites[1];
+            }
+        } else // RIGHT HAND
+        {
+            GameObject hand = GameObject.FindGameObjectWithTag(gb.GetComponent<PlayerController>().prefix + "_RightHand");
+            if (fisted == true)
+            {
+                hand.GetComponent<SpriteRenderer>().sprite = handSprites[3];
+            }
+            else
+            {
+                hand.GetComponent<SpriteRenderer>().sprite = handSprites[4];
+            }
+        } 
+    }
 
 	private void RestartScene(){
 		if(IsXPressed())
